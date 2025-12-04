@@ -7,10 +7,13 @@ import { RouterProvider } from "react-router/dom";
 import "./index.css";
 import { Home } from "./components/pages/Home";
 import App from "./App";
+import { Analytics } from "@vercel/analytics/react"
+import { ContactUs } from "./components/pages/ContactUs";
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<App />}>
     <Route path="" element={<Home />} />
+    <Route path="/contact" element={<ContactUs />} />
   </Route>
 ));
 
@@ -18,6 +21,7 @@ const root = document.getElementById("root") as HTMLElement;
 
 ReactDOM.createRoot(root).render(
   <StrictMode>
+    <Analytics/>
     <ThemeInit />
     <RouterProvider router={router} />
   </StrictMode>,

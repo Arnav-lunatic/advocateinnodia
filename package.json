@@ -12,6 +12,8 @@
     "format:check": "prettier . --check"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@vercel/analytics": "^1.6.1",
     "flowbite-react": "^0.12.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

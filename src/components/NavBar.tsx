@@ -1,16 +1,10 @@
-import { Button, createTheme, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle, ThemeProvider } from "flowbite-react";
+import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
 
-const navTheme = createTheme({
-    navbar: {
-        "root": {
-            "base": "bg-zinc-900 px-2 py-2.5 sm:px-4",
-        },
-    }
-})
+export function NavBar({ classname = "" }) {
+    const url = window.location.pathname;
 
-export function NavBar({classname=""}) {
     return (
-        <ThemeProvider theme={navTheme}>
+        <div>
             <Navbar
                 className={`${classname} z-20`}
                 applyTheme={{
@@ -22,19 +16,20 @@ export function NavBar({classname=""}) {
                     <span className="self-center whitespace-nowrap text-2xl text-white ml-1">in Nodia</span>
                 </NavbarBrand>
                 <div className="flex md:order-2">
-                    <Button clearTheme className="hidden md:block border-2 border-white bg-transparent text-white font-bold px-4 py-2 rounded-md hover:bg-white hover:text-zinc-900 transition-all duration-300 cursor-pointer">Get Appointment</Button>
+                    <Button color="navButton" >Get Appointment</Button>
                     <NavbarToggle />
                 </div>
                 <NavbarCollapse>
-                    <NavbarLink href="/" active>
+                    <NavbarLink
+                        color="navLink" href="/" active={url === "/"}>
                         Home
                     </NavbarLink>
-                    <NavbarLink href="#about">About</NavbarLink>
-                    <NavbarLink href="#services">Services</NavbarLink>
-                    <NavbarLink href="#pricing">Pricing</NavbarLink>
-                    <NavbarLink href="#contact">Contact</NavbarLink>
+                    <NavbarLink href="/about" active={url === "/about"}>About</NavbarLink>
+                    <NavbarLink href="/services" active={url === "/services"}>Services</NavbarLink>
+                    <NavbarLink href="/pricing" active={url === "/pricing"}>Pricing</NavbarLink>
+                    <NavbarLink href="/contact" active={url === "/contact"}>Contact</NavbarLink>
                 </NavbarCollapse>
             </Navbar>
-        </ThemeProvider>
+        </div>
     );
 }
